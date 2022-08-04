@@ -1,4 +1,3 @@
-callApi();
 const tagGender = document.getElementById("span-gender-icon");
 const tagImg = document.getElementById("img-profile");
 const tagName = document.getElementById("p-name");
@@ -7,8 +6,13 @@ const tagEmail = document.getElementById("p-email");
 const btnGen = document.getElementById("btn-random");
 const mainCard = document.getElementById("div-user-card");
 const loading = document.getElementById("div-loading-card");
+mainCard.style.display = "none";
+loading.style.display = "";
+callApi();
 
 btnGen.onclick = () => {
+	mainCard.style.display = "none";
+	loading.style.display = "";
 	callApi();
 };
 
@@ -32,4 +36,6 @@ async function callApi() {
 		resp.data.results[0].location.postcode;
 	tagEmail.innerText = resp.data.results[0].email;
 	console.log(resp.data.results[0]);
+	mainCard.style.display = "";
+	loading.style.display = "none";
 }
